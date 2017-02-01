@@ -5,9 +5,9 @@ read -s pass
 
 docker-compose build
 
-rm -f pgdata/.keep
+sudo rm -f pgdata/.keep
 
-docker-compose run --rm -u root postgres chown postgres:postgres /pgdata
+docker-compose run --rm -u root postgres chown postgres:postgres /pgdata /var/log/postgresql
 docker-compose run --rm -e POSTGRES_PASSWORD="${pass}" postgres initdb /pgdata
 
 ./singha/cp_conf
