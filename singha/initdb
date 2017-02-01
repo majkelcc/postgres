@@ -1,0 +1,14 @@
+#!/bin/bash -eu
+
+echo -n "Enter postgres password: "
+read -s pass
+
+docker-compose build
+
+rm -f pgdata/.keep
+
+docker-compose run --rm -u root postgres chown postgres:postgres /pgdata
+docker-compose run --rm -e POSTGRES_PASSWORD="${pass}" postgres initdb /pgdata
+
+./singha/cp_conf
+

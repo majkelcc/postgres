@@ -1,0 +1,5 @@
+#!/bin/bash -eu
+
+./singha/cp_conf
+
+docker-compose exec postgres pg_ctl reload

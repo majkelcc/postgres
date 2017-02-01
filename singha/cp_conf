@@ -1,0 +1,4 @@
+#!/bin/bash -eu
+
+sudo tee pgdata/postgresql.conf < postgres.d/postgresql.conf > /dev/null
+sudo tee pgdata/pg_hba.conf < postgres.d/pg_hba.conf > /dev/null

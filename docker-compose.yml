@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  postgres:
+    build: .
+    user: postgres
+    volumes:
+      - ./pgdata:/pgdata:rw
+      - ./postgres.d:/postgres.d:ro
+      - ./log:/var/log/postgresql:rw
+    environment:
+      - PGDATA=/pgdata
+    network_mode: host
+
+  psql:
+    extends: postgres
+    entrypoint: psql
